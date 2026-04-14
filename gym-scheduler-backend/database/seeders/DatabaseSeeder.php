@@ -12,21 +12,23 @@ class DatabaseSeeder extends Seeder
 {
     public function run(): void
     {
-        
-        User::create([
-            'name' => 'Quản Trị Viên',
-            'email' => 'admin@gmail.com',
-            'password' => Hash::make('123456'), 
-            'role' => 'admin',
-        ]);
+        User::updateOrCreate(
+            ['email' => 'admin@gmail.com'],
+            [
+                'name' => 'Quản Trị Viên',
+                'password' => Hash::make('123456'),
+                'role' => 'admin',
+            ]
+        );
 
-        
-        User::create([
-            'name' => 'Hội Viên Mẫu',
-            'email' => 'user@gmail.com',
-            'password' => Hash::make('123456'),
-            'role' => 'user',
-        ]);
+        User::updateOrCreate(
+            ['email' => 'user@gmail.com'],
+            [
+                'name' => 'Hội Viên Mẫu',
+                'password' => Hash::make('123456'),
+                'role' => 'user',
+            ]
+        );
 
         
     }
